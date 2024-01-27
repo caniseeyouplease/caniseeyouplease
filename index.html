@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f3f4f4;
+            height: 75vh;
+            margin: 0;
+            display: flex;
+          align-items: center;
+          justify-content: center;
+	flex-direction: column;
+        }
+
+        .button-container {
+        }
+
+	text {
+	  font-family: 'Bradley Hand', cursive;
+          font-size: 25px;
+          font-weight: bold;
+          color: #ff69b4;	
+          padding: 10px 10px;
+	}
+        button {
+          padding: 10px 20px;
+          background-color: #ff69b4;
+          font-family: 'Bradley Hand', cursive;
+          font-size: 20px;
+          font-weight: bold;
+          color: white;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          position: absolute;
+	}
+
+	#newText {
+          font-family: 'Bradley Hand', cursive;
+          font-size: 30px;
+          font-weight: bold;
+          color: #ff69b4;
+          z-index: 1;
+        }
+
+	/* Media query for smaller screens (e.g., mobile) */
+        @media screen and (max-width: 600px) {
+            text {
+                font-size: 20px;
+            }
+            button {
+                font-size: 16px;
+            }
+            #newText {
+                font-size: 24px;
+            }
+        }
+        
+        .x1, .x2, .x3, .x4, .x5, .x6 {
+            position: absolute;
+            width: 24px;
+            height: 21px;
+            display: block;
+        }
+
+        .x1 {
+            left: 5%;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+            opacity: 0.6;
+            animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+        }
+
+		.x2 {
+            left: 25%;
+            -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+            opacity: 0.9;
+            animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+        }
+
+        .x3 {
+            left: 55%;
+            -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.8;
+            animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+        }
+
+        .x4 {
+            left: 72%;
+            -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+            opacity: 0.9;
+            animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+        }
+
+        .x5 {
+            left: 88%;
+            -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+            opacity: 0.3;
+            animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+        }
+
+        .x6 {
+            left: 33%;
+            opacity: 1;
+            animation: moveclouds 2s linear infinite, swayWays 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes moveclouds {
+            0% {
+                top: 500px;
+            }
+            100% {
+                top: -500px;
+            }
+        }
+
+        @keyframes sideWays {
+            0% {
+                margin-left: 0px;
+            }
+            100% {
+                margin-left: 50px;
+            }
+        }
+
+        @keyframes swayWays {
+            0% {
+                transform: rotate(12deg);
+                left: -0.3%;
+            }
+            33% {
+                transform: rotate(-2deg);
+                left: 0.7%;
+            }
+            100% {
+                transform: rotate(0deg);
+                left: -12%;
+            }
+        }
+
+        /* HEART CODE */
+        .altheart {
+            background: url(http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat center;
+            width: 24px;
+            height: 21px;
+            position: relative;
+            display: block;
+        }
+
+        .heart {
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            position: absolute;
+            content: "";
+            left: 18px;
+            top: 0;
+            width: 18px;
+            height: 30px;
+            background: #CC2022;
+            border-radius: 30px 30px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="heart x1"></div>
+    <div class="heart x2"></div>
+    <div class="heart x3"></div>
+    <div class="heart x4"></div>
+    <div class="heart x5"></div>
+    <div class="altheart x6"></div>
+	<img src="ele.gif" alt="GIF">
+	<text>Hey Matt! You've stumbled upon a little corner of the internet created just for you. <br>
+	   <center>Can I see you again ??</center></text>
+    	<div class="button-container">
+		<button id="yes">Yes</button><br><br><br>
+        	<button id="no">No</button>
+    </div>
+
+    <script>
+        $(function () {
+            $("#yes").on({
+                click: function () {
+                    // Remove existing elements
+                    $(".button-container").remove();
+		            $("text").remove();
+                    $("img").remove();
+                    
+                    // Add a new background image
+							      $("body").append('<div id="newText">Yeeeyyyyy !!</div>');
+                    $("body").append('<img src="happyEle.gif" alt="New GIF">');
+                }
+            });
+            $("#no").on({
+                mouseover: function () {
+                    $(this).css({
+                        left: (Math.random() * 200) + "px",
+                        top: (Math.random() * 200) + "px",
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
